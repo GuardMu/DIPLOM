@@ -66,7 +66,7 @@ class RegisterController extends Controller
     {
         return User::create([
             'FIO' => $data['FIO'],
-            'photo'=>'photo/default.svg',
+            'photo'=>'default/defaultUserProfile.png',
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
         ]);
