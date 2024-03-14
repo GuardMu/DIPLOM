@@ -2,15 +2,27 @@
 
 namespace App\Http\Controllers;
 
+
 use App\Models\TypeOrder;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class OrderController extends Controller
 {
-    public function add_order(Request $request)
+    public function OpenEditForm($id)
     {
-
+        $user = Auth::user();
+        if ($user->is_admin || $user->is_manager) {
+            $order = TypeOrder::find($id); // Предполагаем, что вы используете модель OrderType
+            if (!$order) {
+                return redirect()->route('someRouteName')->with('error', 'Заказ не найден.');
+            }
+            return view('order.edit.EditingOrderType', compact('order')); // Передаем заказ в виде массива
+        } else {
+            return redirect()->route('home')->with('warning', 'Недостаточно прав'); // Используйте redirect вместо view для консистентности UX
+        }
     }
+
 
     public function add_type_order(Request $request)
     {
@@ -32,12 +44,16 @@ class OrderController extends Controller
     public function type_order_edit(Request $request)
     {
         $order = TypeOrder::find($request->id);
-        if ($order) {
-            $order->name = $request->name;
-            $order->description = $request->description;
-            $order->price = $request->price;
-            $order->save();
+        if (!$order) {
+
+            return redirect()->route('admin_page')->with('error', 'Такого типа заказа не существует ');
         }
+
+        $order->name = $request->name;
+        $order->description = $request->description;
+        $order->price = $request->price;
+        $order->save();
+
         return redirect()->route('admin_page')->with('success', 'Тип заказа: ' . $request->name . ' успешно обновлен');
     }
 

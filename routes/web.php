@@ -38,8 +38,8 @@ Route::post('/home/update',[\App\Http\Controllers\HomeController::class, 'update
 
 //Фукционал менеджера начало
 
-Route::post('/order/add_order',);
 
+Route::get('/orderEditForm/{id}',[\App\Http\Controllers\OrderController::class,'OpenEditForm'])->middleware('auth')->name('OpenEditOrderForm');
 //Фукционал менеджера конец
 
 // Фукцианал админа начало

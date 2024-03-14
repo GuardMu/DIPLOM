@@ -22,7 +22,7 @@
         alerts.forEach(function(alert) {
             setTimeout(function() {
                 alert.style.display = 'none';
-            }, 5000); // Сообщения исчезнут через 5 секунд
+            }, 3000); // Сообщения исчезнут через 3 секунд
         });
     });
 </script>
