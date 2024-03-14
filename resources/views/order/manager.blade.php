@@ -7,9 +7,17 @@
             @csrf
 
             <div class="mb-3">
-                <label for="orderType" class="form-label">Тип заявки</label>
-                <input type="text" class="form-control bg-dark text-light" id="orderType"
-                       name="order_type" required>
+
+                <div class="dropdown">
+                    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton2"
+                            data-toggle="dropdown" aria-expanded="false">
+                        Тип заявки
+                    </button>
+                    <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="dropdownMenuButton2">
+                        <li><a class="dropdown-item active" href="#">Action</a></li>
+
+                    </ul>
+                </div>
             </div>
             <div class="mb-3">
                 <label for="description" class="form-label">Описание</label>
