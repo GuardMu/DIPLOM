@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Order;
+use App\Models\TypeOrder;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -34,7 +35,9 @@ class HomeController extends Controller
     {
 
         $orders = Order::all();
-        return view('order', ['orders' => $orders]);
+        $orderTypes = TypeOrder::all();
+        return view('order', ['orders' => $orders, 'orderTypes' => $orderTypes]);
+
     }
 
     public function update(Request $request)

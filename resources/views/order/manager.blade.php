@@ -7,15 +7,29 @@
             @csrf
 
             <div class="mb-3">
-
                 <div class="dropdown">
-                    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton2"
-                            data-toggle="dropdown" aria-expanded="false">
+                    <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton2"
+                            data-toggle="dropdown" aria-expanded="true">
                         Тип заявки
                     </button>
                     <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="dropdownMenuButton2">
-                        <li><a class="dropdown-item active" href="#">Action</a></li>
-
+                        @foreach ($orderTypes as $orderType)
+                            <li><a class="dropdown-item " href="{{$orderType->id}}">{{ $orderType->name }}</a></li>
+                        @endforeach
+                    </ul>
+                </div>
+            </div>
+            <div class="mb-3">
+                <div class="dropdown">
+                    <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton2"
+                            data-toggle="dropdown" aria-expanded="true">
+                        Тип заявки
+                    </button>
+                    <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="dropdownMenuButton2">
+                        <!-- Вставляем статические элементы меню -->
+                        <li><a class="dropdown-item" href="#">Тип заявки 1</a></li>
+                        <li><a class="dropdown-item" href="#">Тип заявки 2</a></li>
+                        <li><a class="dropdown-item" href="#">Тип заявки 3</a></li>
                     </ul>
                 </div>
             </div>
