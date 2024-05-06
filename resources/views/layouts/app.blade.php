@@ -11,6 +11,8 @@
 
     <!-- Scripts -->
     <script src="{{ asset('public/js/app.js') }}" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" ></script>
+
 
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
@@ -19,7 +21,8 @@
     <!-- Styles -->
     <link href="{{ asset('public/css/app.css') }}" rel="stylesheet">
     <link href="{{ asset('public/css/main.css') }}" rel="stylesheet">
-    <link rel="icon" href="{{ asset('public/favicon.ico') }}" type="image/x-icon">
+    <link rel="icon" href="{{ asset('public/storage/default/favicon.ico') }}" type="image/x-icon">
+
 
 </head>
 <body>
