@@ -40,6 +40,7 @@ Route::post('/home/update',[\App\Http\Controllers\HomeController::class, 'update
 
 
 Route::get('/orderEditForm/{id}',[\App\Http\Controllers\OrderController::class,'OpenEditForm'])->middleware('auth')->name('OpenEditOrderForm');
+Route::post('/requests/store', [\App\Http\Controllers\OrderController::class, 'store'])->name('requests.store')->middleware('auth');
 //Фукционал менеджера конец
 
 // Фукцианал админа начало

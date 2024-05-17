@@ -18,7 +18,7 @@
             <div class="mb-3">
                 <label for="description" class="form-label">Описание</label>
                 <textarea class="form-control bg-dark text-light" id="description" name="description"
-                          required> </textarea>
+                          required></textarea>
             </div>
 
             <button type="submit" class="btn btn-primary">Создать заявку</button>
