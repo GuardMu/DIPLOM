@@ -17,16 +17,10 @@
                 <li><a href="{{url('/')}}" class="nav-link px-2 text-secondary">{{ config('app.name', 'Laravel') }}</a>
                 </li>
                 <li><a href="#" class="nav-link px-2 text-white">-</a></li>
-                @if($AuthUser)
-                    @if($UserAuthId->is_manager == 1)
-                        <li><a href="/order" class="nav-link px-2 text-white">Оформить заказ</a></li>
-                    @endif
-
-                @endif
 
                 @if($AuthUser)
                     <li><a href="/home" class="nav-link px-2 text-white ">Профиль</a></li>
-                    @if($UserAuthId->is_master == 1)
+                    @if($UserAuthId->is_manager == 1)
 
                         <li><a href="/order" class="nav-link px-2 text-danger ">Работа</a></li>
 

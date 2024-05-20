@@ -14,10 +14,10 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function ()
-{
+Route::get('/', function () {
     return view('welcome');
-});
+})->name('welcome');
+
 
 Auth::routes();
 // Пользователи начало
@@ -32,15 +32,18 @@ Route::post('/home/update',[\App\Http\Controllers\HomeController::class, 'update
 
 //фукцианал мастера начало
 
-
+Route::post('/add-order-master',[\App\Http\Controllers\OrderController::class, 'assignOrderToMaster'])->name('assignOrderToMaster')->middleware('auth');
 
 //фукцианал мастера конец
 
 //Фукционал менеджера начало
 
 
-Route::get('/orderEditForm/{id}',[\App\Http\Controllers\OrderController::class,'OpenEditForm'])->middleware('auth')->name('OpenEditOrderForm');
-Route::post('/requests/store', [\App\Http\Controllers\OrderController::class, 'store'])->name('requests.store')->middleware('auth');
+Route::get('/admin/edit-type-order/{id}', [\App\Http\Controllers\OrderController::class, 'showEditForm'])->name('OpenEditOrderForm')->middleware('auth');
+
+Route::post('/admin/edit-type-order', [\App\Http\Controllers\OrderController::class, 'editTypeOrder'])->name('admin.editTypeOrder')->middleware('auth');
+
+Route::post('/order/add', [\App\Http\Controllers\OrderController::class, 'store'])->name('order.add')->middleware('auth');
 //Фукционал менеджера конец
 
 // Фукцианал админа начало
@@ -51,8 +54,17 @@ Route::get('/admin',[\App\Http\Controllers\AdminController::class,'admin_page'])
 //Добавление типа услуг
 Route::post('/admin/addTypeOrder',[\App\Http\Controllers\OrderController::class,'add_type_order'])->name('admin.addTypeOrder')->middleware('auth');
 
+Route::get('/admin/DeactivateAdm/{id}',[\App\Http\Controllers\AdminController::class,'DeactivateAdminRole'])->name('DeactivateAdminRole')->middleware('auth');
+Route::get('/admin/ActivateAdm/{id}',[\App\Http\Controllers\AdminController::class,'ActivateAdminRole'])->name('ActivateAdminRole')->middleware('auth');
+
+Route::get('/admin/DeactivateMas/{id}',[\App\Http\Controllers\AdminController::class,'DeactivateMasterRole'])->name('DeactivateMasterRole')->middleware('auth');
+Route::get('/admin/ActivateMas/{id}',[\App\Http\Controllers\AdminController::class,'ActivateMasterRole'])->name('ActivateMasterRole')->middleware('auth');
+
+Route::get('/admin/DeactivateMan/{id}',[\App\Http\Controllers\AdminController::class,'DeactivateManagerRole'])->name('DeactivateManagerRole')->middleware('auth');
+Route::get('/admin/ActivateMan/{id}',[\App\Http\Controllers\AdminController::class,'ActivateManagerRole'])->name('ActivateManagerRole')->middleware('auth');
+
 //редактирование типа услуг
-Route::post('/admin/editTypeOrder',[\App\Http\Controllers\OrderController::class,'type_order_edit'])->name('admin.editTypeOrder')->middleware('auth');
+
 
 //Удаление типа услуг
 Route::post('/admin/TypeOrder/{id}/del',[\App\Http\Controllers\OrderController::class,'type_order_del'])->name('admin.delTypeOrder')->middleware('auth');

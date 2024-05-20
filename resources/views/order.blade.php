@@ -14,8 +14,7 @@
     @include('order/manager')
 
             @endif
-
-            @if($user->is_master == 1)
+            @if($user->is_master ==1)
                 @include('order/master')
             @endif
         </div>

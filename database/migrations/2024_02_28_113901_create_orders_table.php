@@ -16,19 +16,18 @@ class CreateOrdersTable extends Migration
         Schema::create('orders', function (Blueprint $table) {
 
             $table->id();
-            $table->unsignedBigInteger('client_id');
-            $table->unsignedBigInteger('master_id');
+            $table->string('client_name');
+            $table->string('client_number');
+            $table->unsignedBigInteger('master_id')->nullable();
+            $table->string('status')->nullable();
+            $table->string('tags');
             $table->text('description');
-            $table->unsignedBigInteger('order_type'); // Тип заказа
-            $table->string('order_code'); // Код заказа
-            $table->dateTime('received_at'); // Дата получения
-            $table->dateTime('completed_at')->nullable(); // Дата выполнения, может быть null
+            $table->string('order_code');
+            $table->string('full_price');
             $table->timestamps();
-
 
             // Внешние ключи
             $table->foreign('master_id')->references('id')->on('users')->onDelete('cascade');
-            $table->foreign('order_type')->references('id')->on('type_orders')->onDelete('cascade');
         });
     }
 //написать миграцию про типы
