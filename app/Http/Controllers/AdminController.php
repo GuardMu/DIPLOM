@@ -27,9 +27,9 @@ class AdminController extends Controller
 
             $user->is_admin = 0;
             $user->save();
-            return response()->json(['success', 'Вы сняли роль администратора']);
+            return response()->route('admin_page')->with(['success', 'Вы сняли роль Администратор']);
         } else {
-            return response()->json(['success', 'Пользователь не найден']);
+            return response()->route('admin_page')->with(['success', 'Пользователь не найден']);
         }
     }
     public function ActivateAdminRole($id)
@@ -41,9 +41,9 @@ class AdminController extends Controller
 
             $user->is_admin = 1;
             $user->save();
-            return response()->json(['success', 'Вы сняли роль администратора']);
+            return redirect()->route('admin_page')->with('success', 'Вы назначили роль Администратор');
         } else {
-            return response()->json(['success', 'Пользователь не найден']);
+            return redirect()->route('admin_page')->with('success', 'Пользователь не найден');
         }
     }
     public function DeactivateMasterRole($id)
@@ -55,9 +55,9 @@ class AdminController extends Controller
 
             $user->is_master = 0;
             $user->save();
-            return response()->json(['success', 'Вы сняли роль администратора']);
+            return redirect()->route('admin_page')->with('success', 'Вы сняли роль Мастер');
         } else {
-            return response()->json(['success', 'Пользователь не найден']);
+            return redirect()->route('admin_page')->with('success', 'Пользователь не найден');
         }
     }
     public function ActivateMasterRole($id)
@@ -69,9 +69,9 @@ class AdminController extends Controller
 
             $user->is_master = 1;
             $user->save();
-            return response()->json(['success', 'Вы сняли роль администратора']);
+            return redirect()->route('admin_page')->with('success', 'Вы назначили роль Мастер');
         } else {
-            return response()->json(['success', 'Пользователь не найден']);
+            return redirect()->route('admin_page')->with('success', 'Пользователь не найден');
         }
     }
     public function DeactivateManagerRole($id)
@@ -83,9 +83,9 @@ class AdminController extends Controller
 
             $user->is_manager = 0;
             $user->save();
-            return response()->json(['success', 'Вы сняли роль администратора']);
+            return redirect()->route('admin_page')->with('success', 'Вы сняли роль Менеджер');
         } else {
-            return response()->json(['success', 'Пользователь не найден']);
+            return redirect()->route('admin_page')->with('success', 'Пользователь не найден');
         }
     }
     public function ActivateManagerRole($id)
@@ -97,9 +97,9 @@ class AdminController extends Controller
 
             $user->is_manager = 1;
             $user->save();
-            return response()->json(['success', 'Вы сняли роль администратора']);
+            return redirect()->route('admin_page')->with('success', 'Вы назначили роль Менеджер');
         } else {
-            return response()->json(['success', 'Пользователь не найден']);
+            return redirect()->route('admin_page')->with('success', 'Пользователь не найден');
         }
     }
 
